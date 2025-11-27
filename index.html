@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GLOBAL POP GUIDE</title>
+  <style>
+    :root {
+      --bg: #f9f8fc;
+      --card: #ffffff;
+      --primary: #8b5cf6;
+      --secondary: #5ac8fa;
+      --text: #1f1f1f;
+      --muted: #555555;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    /* 레이아웃 설정 */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    header {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+    }
+    nav ul {
+      display: flex;
+      gap: 16px;
+      list-style: none;
+      font-size: 0.9rem;
+      flex-wrap: wrap;
+    }
+    nav a {
+      padding: 6px 12px;
+      border-radius: 999px;
+      transition: all 0.2s ease;
+    }
+    nav a:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+    main section {
+      margin: 60px 0;
+    }
+    /* 히어로 영역 */
+    .hero {
+      text-align: center;
+      padding: 100px 0 80px;
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    .btn.primary {
+      background: linear-gradient(135deg, var(--primary), #a78bfa);
+      color: #fff;
+      border: none;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(139, 92, 246, 0.2);
+    }
+    /* 섹션 공통 */
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+    section p.section-intro {
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .section-block {
+      margin-top: 32px;
+    }
+    /* 카드 스타일 */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+    }
+    .card h3 {
+      font-size: 1.2rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .tagline {
+      font-size: 0.9rem;
+      color: var(--secondary);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .card ul {
+      margin-top: 12px;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    /* 리스트 스타일 */
+    .definition-list li,
+    .playlist li {
+      margin-bottom: 12px;
+    }
+    .definition-list {
+      padding-left: 20px;
+    }
+    .history-timeline {
+      display: grid;
+      gap: 20px;
+    }
+    .timeline-block {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+    .timeline-block h3 {
+      margin-bottom: 8px;
+      color: var(--primary);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: var(--card);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    th, td {
+      padding: 14px;
+      border-bottom: 1px solid #ececec;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+    th {
+      background: rgba(139, 92, 246, 0.08);
+      color: var(--primary);
+    }
+    table tr:last-child td {
+      border-bottom: none;
+    }
+    /* 강조 블록 */
+    .pill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .pill {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+    .pill strong {
+      display: block;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    /* 플레이리스트 */
+    .playlist {
+      list-style: decimal;
+      padding-left: 20px;
+      color: var(--text);
+    }
+    .playlist span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    footer {
+      margin-top: 80px;
+      padding: 24px 0 40px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    /* 비교 CTA */
+    .cta-buttons {
+      margin-top: 24px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .cta-buttons .btn {
+      min-width: 200px;
+      text-align: center;
+    }
+    /* 반응형 */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-end;
+      }
+      .hero h1 {
+        font-size: 2.1rem;
+      }
+      .hero {
+        padding: 70px 0;
+      }
+      section h2 {
+        font-size: 1.7rem;
+      }
+      th, td {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <div class="logo">GLOBAL POP GUIDE</div>
+      <nav>
+        <ul>
+          <li><a href="#kpop-section">K-POP</a></li>
+          <li><a href="#us-pop-section">미국 팝</a></li>
+          <li><a href="#uk-pop-section">영국 팝</a></li>
+          <li><a href="#jpop-section">일본 팝</a></li>
+          <li><a href="#latin-pop-section">라틴 팝</a></li>
+          <li><a href="#compare-guide">비교 &amp; 입문 가이드</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>GLOBAL POP GUIDE</h1>
+      <p>보라빛 감성의 K-POP부터 미국·영국·일본·라틴 팝까지, 세계 대중음악의 흐름을 한눈에 살펴보세요.</p>
+      <p>장르마다 다른 문화와 리듬을 품었지만, 모두가 당신의 첫 플레이 버튼을 기다리고 있습니다.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#kpop-section">K-POP부터 살펴보기</a>
+        <a class="btn" href="#compare-guide">입문 가이드 확인</a>
+      </div>
+    </section>
+
+    <!-- K-POP -->
+    <section id="kpop-section">
+      <h2>K-POP</h2>
+      <p class="section-intro">아이돌 시스템과 팬덤 문화가 결합된 하이브리드 콘텐츠. 5세대까지 진화하며 글로벌 팝 신을 재정의하고 있습니다.</p>
+
+      <div class="section-block" id="what-is-kpop">
+        <h3>K-POP이란?</h3>
+        <ul class="definition-list">
+          <li>아이돌 제작 시스템: 연습생 트레이닝과 자체 프로듀싱이 결합해 완성도 높은 팀을 탄생시킵니다.</li>
+          <li>퍼포먼스 &amp; 세계관: 탄탄한 안무와 시리즈형 스토리텔링으로 드라마틱한 몰입감을 선사합니다.</li>
+          <li>팬덤 참여 문화: 팬이 투표, 스트리밍, 콘텐츠 제작에 적극 참여하며 아티스트 서사에 동행합니다.</li>
+          <li>멀티 플랫폼 전략: 뮤직비디오, 숏폼, 버추얼 콘텐츠를 동시에 배포해 초고속 확산을 이룹니다.</li>
+        </ul>
+      </div>
+
+      <div class="section-block" id="history">
+        <h3>K-POP의 역사 &amp; 세대별 특징</h3>
+        <div class="history-timeline">
+          <article class="timeline-block">
+            <h3>1세대 (1996~2003)</h3>
+            <p>H.O.T, S.E.S, g.o.d 등이 아이돌 시스템을 정립하며 중국·일본 시장 공략을 시작했습니다.</p>
+          </article>
+          <article class="timeline-block">
+            <h3>2세대 (2004~2012)</h3>
+            <p>TVXQ, Girls' Generation, BIGBANG이 아시아 투어를 확장하며 한류 팬덤을 대중화했습니다.</p>
+          </article>
+          <article class="timeline-block">
+            <h3>3세대 (2013~2018)</h3>
+            <p>BTS, EXO, TWICE, BLACKPINK가 SNS와 유튜브를 통해 글로벌 차트 정상에 올랐습니다.</p>
+          </article>
+          <article class="timeline-block">
+            <h3>4세대 (2019~2022)</h3>
+            <p>Stray Kids, TXT, ATEEZ, aespa 등이 자작곡·메타버스 콘셉트로 월드투어를 가속했습니다.</p>
+          </article>
+          <article class="timeline-block">
+            <h3>5세대 (2023~현재)</h3>
+            <p>NewJeans, IVE, LE SSERAFIM, BABYMONSTER, ILLIT 등이 숏폼과 SNS로 초글로벌 팬덤을 구축 중입니다.</p>
+          </article>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>세대</th>
+              <th>활동 시기</th>
+              <th>대표 그룹</th>
+              <th>키워드</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1세대</td>
+              <td>1996-2003</td>
+              <td>H.O.T, S.E.S</td>
+              <td>아이돌 시스템, 해외 진출의 시작</td>
+            </tr>
+            <tr>
+              <td>2세대</td>
+              <td>2004-2012</td>
+              <td>TVXQ, 소녀시대, BIGBANG</td>
+              <td>아시아 투어, 한류 팬덤 확장</td>
+            </tr>
+            <tr>
+              <td>3세대</td>
+              <td>2013-2018</td>
+              <td>BTS, EXO, TWICE</td>
+              <td>글로벌 대중성, SNS 확산</td>
+            </tr>
+            <tr>
+              <td>4세대</td>
+              <td>2019-2022</td>
+              <td>Stray Kids, ATEEZ, aespa</td>
+              <td>퍼포먼스 강화, 메타버스 콘셉트</td>
+            </tr>
+            <tr>
+              <td>5세대</td>
+              <td>2023-현재</td>
+              <td>NewJeans, IVE, LE SSERAFIM</td>
+              <td>숏폼 중심, 초글로벌 팬덤</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block" id="artists">
+        <h3>대표 아티스트</h3>
+        <div class="cards">
+          <article class="card">
+            <h3>NewJeans (뉴진스)</h3>
+            <p class="tagline">Y2K 감성 하이틴 팝 아이콘</p>
+            <p>2022년 HYBE LABELS 산하 ADOR에서 데뷔. 미니멀한 UK 개러지·R&amp;B 사운드로 틱톡을 장악하고, 2024년 싱글이 빌보드 HOT100에 연속 진입했습니다.</p>
+            <ul>
+              <li>Attention</li>
+              <li>Super Shy</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>LE SSERAFIM (르세라핌)</h3>
+            <p class="tagline">피트니스 퍼포먼스 퀸</p>
+            <p>2022년 HYBE·SOURCE MUSIC에서 데뷔. 하이브리드 팝과 칼군무로 존재감을 세웠고, 2024년 코첼라 메인 스테이지를 경험했습니다.</p>
+            <ul>
+              <li>ANTIFRAGILE</li>
+              <li>Easy</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>IVE (아이브)</h3>
+            <p class="tagline">럭셔리 팝 &amp; 셀프 러브 메시지</p>
+            <p>2021년 스타쉽 엔터테인먼트에서 데뷔. 중독적 훅과 자신감 있는 가사로 서클차트 1위를 이어가며 2024년 월드투어로 미국·유럽을 순회했습니다.</p>
+            <ul>
+              <li>LOVE DIVE</li>
+              <li>I AM</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Stray Kids (스트레이 키즈)</h3>
+            <p class="tagline">자체 프로듀싱 퍼포먼스 챔피언</p>
+            <p>2018년 JYP Entertainment에서 데뷔. 자작곡 기반의 라우드 사운드로 2023·2024년 빌보드 200을 연속 제패했습니다.</p>
+            <ul>
+              <li>God's Menu</li>
+              <li>LALALALA</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>TXT (투모로우바이투게더)</h3>
+            <p class="tagline">Z세대 성장 서사 대표주자</p>
+            <p>2019년 HYBE에서 등장. 팝 록·퓨처 소울을 넘나드는 ‘The Name Chapter’ 시리즈와 2025년 스타디움 투어로 입지를 넓혔습니다.</p>
+            <ul>
+              <li>0X1=LOVESONG</li>
+              <li>Chasing That Feeling</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>aespa (에스파)</h3>
+            <p class="tagline">메타버스 세계관의 선구자</p>
+            <p>2020년 SM Entertainment에서 데뷔. AI 아바타 서사와 일렉트로닉 팝으로 차별화하며 2024년 ‘Drama’로 글로벌 차트를 석권했습니다.</p>
+            <ul>
+              <li>Next Level</li>
+              <li>Drama</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Seventeen (세븐틴)</h3>
+            <p class="tagline">자체 제작형 퍼포먼스 명가</p>
+            <p>2015년 PLEDIS Entertainment에서 데뷔. 유닛 협업 시스템과 2024년 미니 앨범 히트로 일본 돔 투어를 성료했습니다.</p>
+            <ul>
+              <li>Super</li>
+              <li>HOT</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>BABYMONSTER (베이비몬스터)</h3>
+            <p class="tagline">YG의 차세대 하이브리드 힙합 팀</p>
+            <p>2023년 YG Entertainment에서 데뷔. 보컬·랩 밸런스로 주목받으며 2025년 첫 미니앨범이 글로벌 스트리밍 신인차트를 장악했습니다.</p>
+            <ul>
+              <li>Batter Up</li>
+              <li>Sheesh</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <div class="section-block" id="playlist">
+        <h3>K-POP 입문 추천 플레이리스트</h3>
+        <ol class="playlist">
+          <li><a href="#" title="YouTube에서 검색해 보세요">Supernova – aespa</a><span>글리치 베이스와 메탈 요소가 공존하는 4세대 시그니처 사운드.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">Bite Me – ENHYPEN</a><span>다크 팝과 하우스 리듬이 결합된 몽환적 러브송.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">How Sweet – NewJeans</a><span>UK 개러지 기반의 경쾌한 드럼과 미니멀 보컬이 특징.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">Smart – LE SSERAFIM</a><span>애티튜드 넘치는 보컬과 퀵 스텝 안무가 돋보이는 트랙.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">(It Goes Like) Nanana – Peggy Gou</a><span>K-하우스와 K-POP 감성이 만나는 글로벌 페스티벌 찐송.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">LALALALA – Stray Kids</a><span>히어로 무드의 브라스와 팀 고유의 라우드 사운드가 폭발합니다.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">Perfect Night – LE SSERAFIM</a><span>영어 싱글로 북미 라디오 차트를 공략한 하우스 팝.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">Drama – aespa</a><span>거칠고 직선적인 보컬과 메탈릭 신스가 에너지를 끌어올립니다.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">Love Lee – AKMU</a><span>감성 인디 팝과 밝은 가사가 입문자에게 편안한 선택.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">Easy – LE SSERAFIM</a><span>묵직한 베이스와 휘슬 사운드로 긴장감 있는 무드를 완성.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- US POP -->
+    <section id="us-pop-section">
+      <h2>미국 팝 (US Pop)</h2>
+      <p class="section-intro">빌보드 차트를 중심으로 팝·힙합·R&amp;B가 서로 섞이며 트렌드를 만들어 왔습니다. 대형 레이블과 스트리밍 플랫폼의 영향력이 결합해 ‘팝 공장’이라 불릴 만큼 빠르게 변주됩니다.</p>
+      <div class="pill-grid">
+        <div class="pill">
+          <strong>1980~1990</strong>
+          신스팝과 MTV 세대로 Michael Jackson, Madonna 같은 팝 아이콘이 탄생했습니다.
+        </div>
+        <div class="pill">
+          <strong>2000년대</strong>
+          팝 디바와 힙합 크로스오버가 주류를 형성하며 Beyoncé, Mariah Carey가 영향력을 확장했습니다.
+        </div>
+        <div class="pill">
+          <strong>2010년대</strong>
+          EDM·팝 융합과 싱어송라이터 계보가 공존하며 Taylor Swift, Bruno Mars가 시대를 대표했습니다.
+        </div>
+        <div class="pill">
+          <strong>2020년대</strong>
+          스트리밍 중심 시대. Billie Eilish, Olivia Rodrigo처럼 서정적·미니멀 사운드가 주류에 진입했습니다.
+        </div>
+      </div>
+      <div class="section-block">
+        <h3>대표 아티스트</h3>
+        <div class="cards">
+          <article class="card">
+            <h3>Taylor Swift</h3>
+            <p class="tagline">스토리텔링의 여왕</p>
+            <p>컨트리 기반 서사형 팝을 일상의 언어로 풀어내며 세대별 앨범 프로젝트를 이어가고 있습니다. 2024~2025년 ‘The Eras Tour’를 통해 글로벌 팬덤과 역대급 흥행을 기록했습니다.</p>
+            <ul>
+              <li>Anti-Hero</li>
+              <li>Love Story</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Beyoncé</h3>
+            <p class="tagline">팝·R&amp;B 퍼포먼스 아이콘</p>
+            <p>데스티니스 차일드 출신 보컬리스트. 최신 ‘Renaissance’ 프로젝트로 하우스·디스코를 재해석하며, 장르와 문화를 잇는 큐레이터로 활약합니다.</p>
+            <ul>
+              <li>CUFF IT</li>
+              <li>Crazy in Love</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Bruno Mars</h3>
+            <p class="tagline">레트로 소울의 재현</p>
+            <p>70~80년대 펑크와 소울을 현대적으로 재장전해 다양한 세대에게 사랑받고 있습니다. Silk Sonic 활동으로 그래미 주요 부문을 싹쓸이했습니다.</p>
+            <ul>
+              <li>24K Magic</li>
+              <li>Leave the Door Open</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Billie Eilish</h3>
+            <p class="tagline">저음과 속삭임의 뉴 웨이브</p>
+            <p>친형 Finneas와의 미니멀 프로덕션으로 Z세대 정서를 대변하며 그래미 ‘올해의 레코드’를 연속 수상했습니다. 2025년 새 앨범으로 다크 팝을 확장 중입니다.</p>
+            <ul>
+              <li>bad guy</li>
+              <li>What Was I Made For?</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+      <div class="section-block">
+        <h3>US Pop 입문 곡</h3>
+        <ul class="playlist">
+          <li><a href="#" title="YouTube에서 검색해 보세요">As It Was – Harry Styles</a><span>뉴웨이브와 인디 감성이 섞인 담백한 청량 팝.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">drivers license – Olivia Rodrigo</a><span>감정선이 짙게 담긴 발라드·팝 하이브리드.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">Levitating – Dua Lipa</a><span>디스코 리듬과 모던 팝의 매끄러운 결합.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">Peaches – Justin Bieber</a><span>R&amp;B 기반 미드템포 그루브.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">Shallow – Lady Gaga &amp; Bradley Cooper</a><span>록 발라드 감성으로 드라마틱한 전개.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">Uptown Funk – Mark Ronson ft. Bruno Mars</a><span>브라스와 펑키 리듬으로 파티 무드 완성.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- UK POP -->
+    <section id="uk-pop-section">
+      <h2>영국 팝 (UK Pop)</h2>
+      <p class="section-intro">밴드 씬과 싱어송라이터 전통이 공존하며, 브릿팝·인디 팝·신스팝이 차트를 교차합니다. BBC 라디오와 UK Official Chart가 새로운 사운드를 빠르게 조명합니다.</p>
+      <div class="pill-grid">
+        <div class="pill">
+          <strong>60~70년대</strong>
+          The Beatles와 Queen으로 이어지는 밴드 혁명, 스튜디오 실험이 활발했습니다.
+        </div>
+        <div class="pill">
+          <strong>1990년대</strong>
+          Oasis, Blur가 이끄는 브릿팝이 청춘의 앵템이 되었습니다.
+        </div>
+        <div class="pill">
+          <strong>2000년대 이후</strong>
+          Coldplay, Arctic Monkeys 같은 밴드와 Adele, Ed Sheeran 같은 싱어송라이터가 공존합니다.
+        </div>
+        <div class="pill">
+          <strong>2020년대</strong>
+          Dua Lipa, Sam Smith가 댄스·디스코·소울 요소를 세련되게 재해석합니다.
+        </div>
+      </div>
+      <div class="section-block">
+        <h3>대표 아티스트</h3>
+        <div class="cards">
+          <article class="card">
+            <h3>The Beatles</h3>
+            <p class="tagline">팝 작곡법의 교과서</p>
+            <p>1960년대 리버풀에서 출발해 실험적 사운드와 멜로디 혁신을 이끈 전설. 현재도 리마스터·돌비 애트모스 버전으로 재조명됩니다.</p>
+            <ul>
+              <li>Hey Jude</li>
+              <li>Let It Be</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Queen</h3>
+            <p class="tagline">록과 오페라의 파격 조합</p>
+            <p>프레디 머큐리의 폭발적 보컬과 시네마틱 편곡으로 세계 투어를 장악했습니다. 영화 ‘Bohemian Rhapsody’ 이후 MZ세대에게 다시 사랑받고 있습니다.</p>
+            <ul>
+              <li>Bohemian Rhapsody</li>
+              <li>Don't Stop Me Now</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Adele</h3>
+            <p class="tagline">소울 발라드의 상징</p>
+            <p>허스키 감성으로 사랑과 이별 서사를 노래하며 그래미 주요 부문을 석권했습니다. 2025년 라스베이거스 레지던시 공연으로 라이브 저력을 입증했습니다.</p>
+            <ul>
+              <li>Rolling in the Deep</li>
+              <li>Easy On Me</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Coldplay</h3>
+            <p class="tagline">감성 록과 스펙터클 라이브</p>
+            <p>따뜻한 멜로디와 메시지로 전 세계 스타디움 투어를 이어가며 지속가능한 공연 캠페인을 실천합니다.</p>
+            <ul>
+              <li>Viva La Vida</li>
+              <li>Adventure of a Lifetime</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Dua Lipa</h3>
+            <p class="tagline">뉴 디스코 퀸</p>
+            <p>‘Future Nostalgia’ 프로젝트로 80년대 디스코를 2020년대 감성으로 재해석하며 그래미와 브릿 어워즈를 휩쓸었습니다.</p>
+            <ul>
+              <li>Don't Start Now</li>
+              <li>Houdini</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+      <div class="section-block">
+        <h3>UK Pop 입문 곡</h3>
+        <ul class="playlist">
+          <li><a href="#" title="YouTube에서 검색해 보세요">Someone You Loved – Lewis Capaldi</a><span>감성적인 피아노 발라드.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">Watermelon Sugar – Harry Styles</a><span>여름 감성을 담은 소울 팝.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">Don't Start Now – Dua Lipa</a><span>펑키 베이스와 디스코 그루브.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">Shape of You – Ed Sheeran</a><span>댄스홀 리듬을 품은 히트 싱글.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">Fix You – Coldplay</a><span>점층적 빌드업이 감동을 주는 명곡.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">Rolling in the Deep – Adele</a><span>블루지한 드럼과 강렬한 보컬.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- J-POP -->
+    <section id="jpop-section">
+      <h2>일본 팝 (J-Pop)</h2>
+      <p class="section-intro">애니송, 아이돌, 밴드, 시티팝이 공존하며 섬세한 멜로디와 감성적인 코드 진행으로 사랑받습니다. 오리콘 차트와 애니메이션 타이업이 흐름을 이끕니다.</p>
+      <div class="pill-grid">
+        <div class="pill">
+          <strong>1980~1990</strong>
+          시티팝과 싱어송라이터 붐으로 Tatsuro Yamashita, Mariya Takeuchi가 등장했습니다.
+        </div>
+        <div class="pill">
+          <strong>2000년대</strong>
+          J-Pop 아이돌과 밴드 문화가 동시에 성장하며 Ayumi Hamasaki, L'Arc~en~Ciel 등이 전성기를 누렸습니다.
+        </div>
+        <div class="pill">
+          <strong>2010년대</strong>
+          애니송과 보컬로이드, 밴드 씬이 결합해 RADWIMPS, SEKAI NO OWARI, Perfume이 주목받았습니다.
+        </div>
+        <div class="pill">
+          <strong>2020년대</strong>
+          YOASOBI, Official HIGE DANDism, King Gnu 등 하이브리드 사운드가 스트리밍 차트를 장악했습니다.
+        </div>
+      </div>
+      <div class="section-block">
+        <h3>대표 아티스트</h3>
+        <div class="cards">
+          <article class="card">
+            <h3>YOASOBI</h3>
+            <p class="tagline">소설 기반의 시네마틱 팝</p>
+            <p>소설을 음악으로 번역하는 콘셉트로 ‘夜に駆ける’를 히트시켰고, 애니메이션와의 협업으로 글로벌 스트리밍에서 강세를 보입니다.</p>
+            <ul>
+              <li>아이돌</li>
+              <li>夜に駆ける</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Official髭男dism</h3>
+            <p class="tagline">재즈 감성의 피아노 팝 밴드</p>
+            <p>폭발적인 보컬과 재즈 화성이 어우러지는 밴드 사운드로 일본 레드 웨이브를 이끌고 있습니다.</p>
+            <ul>
+              <li>Pretender</li>
+              <li>Subtitle</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Hikaru Utada</h3>
+            <p class="tagline">J-Pop과 R&amp;B의 다리</p>
+            <p>1990년대 후반 데뷔해 R&amp;B 기반의 보컬 스타일로 세계적인 팬층을 확보했습니다. 2020년대에도 꾸준히 실험적인 앨범을 선보이고 있습니다.</p>
+            <ul>
+              <li>First Love</li>
+              <li>One Last Kiss</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>LiSA</h3>
+            <p class="tagline">애니송 록 디바</p>
+            <p>‘귀멸의 칼날’ 시리즈 등 애니메이션 OST로 글로벌 인지도를 얻었으며, 파워풀한 록 보컬로 솔로 투어를 이어갑니다.</p>
+            <ul>
+              <li>炎</li>
+              <li>紅蓮華</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>King Gnu</h3>
+            <p class="tagline">장르 파괴 밴드</p>
+            <p>재즈, 록, 클래식 요소를 결합한 실험적 사운드로 일본 음악상 주요 부문을 석권하고 있습니다.</p>
+            <ul>
+              <li>白日</li>
+              <li>Specialz</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+      <div class="section-block">
+        <h3>J-Pop 입문 곡</h3>
+        <ul class="playlist">
+          <li><a href="#" title="YouTube에서 검색해 보세요">Pretender – Official髭男dism</a><span>감성적인 피아노와 폭발적 후렴.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">アイドル – YOASOBI</a><span>애니 감성과 하이퍼 팝 비트.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">白日 – King Gnu</a><span>재즈·록이 교차하는 드라마틱 사운드.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">One Last Kiss – Hikaru Utada</a><span>신스와 감성 보컬이 어우러진 발라드.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">紅蓮華 – LiSA</a><span>애니송과 록 밴드 사운드의 결합.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">Paprika – Foorin</a><span>아이코닉한 어린이 합창곡으로 세계적 사랑.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- LATIN POP -->
+    <section id="latin-pop-section">
+      <h2>라틴 팝 (Latin Pop)</h2>
+      <p class="section-intro">스페인어·포르투갈어권의 리드미컬한 보컬과 댄스 DNA가 결합된 장르. 레게톤, 댄스홀, 트로피컬 사운드가 빌보드 라틴 차트와 글로벌 차트를 오가며 메인스트림으로 진입했습니다.</p>
+      <div class="pill-grid">
+        <div class="pill">
+          <strong>1990~2000</strong>
+          Ricky Martin, Shakira로 대표되는 라틴 팝 붐이 월드컵·올림픽을 통해 전 세계로 확산되었습니다.
+        </div>
+        <div class="pill">
+          <strong>2010년대</strong>
+          Daddy Yankee, J Balvin이 레게톤을 주류로 이끌며 영어권 시장을 장악했습니다.
+        </div>
+        <div class="pill">
+          <strong>2020년대</strong>
+          Bad Bunny, Karol G, Rosalía가 장르 믹스를 통해 스트리밍 시대의 최전선을 차지했습니다.
+        </div>
+      </div>
+      <div class="section-block">
+        <h3>대표 아티스트</h3>
+        <div class="cards">
+          <article class="card">
+            <h3>Shakira</h3>
+            <p class="tagline">세계가 사랑한 라틴 퀸</p>
+            <p>록·팝·아라비안 멜로디를 혼합한 독창적 사운드와 퍼포먼스로 글로벌 슈퍼스타 반열에 올랐습니다. 2024년에도 슈퍼볼·시상식 무대를 통해 상징성을 이어갑니다.</p>
+            <ul>
+              <li>Hips Don't Lie</li>
+              <li>Waka Waka</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Bad Bunny</h3>
+            <p class="tagline">스트리밍 제왕</p>
+            <p>레게톤과 트랩을 융합한 차세대 사운드로 스포티파이 글로벌 순위를 장기간 지배하며 라틴 음악의 위상을 끌어올렸습니다.</p>
+            <ul>
+              <li>Tití Me Preguntó</li>
+              <li>Moscow Mule</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>J Balvin</h3>
+            <p class="tagline">컬러풀한 레게톤</p>
+            <p>‘Reggaeton’s Global Ambassador’로 불리며 패션·아트 협업을 통해 라틴 팝을 문화 트렌드로 확장했습니다.</p>
+            <ul>
+              <li>Mi Gente</li>
+              <li>Ginza</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Rosalía</h3>
+            <p class="tagline">플라멩코 x 하이퍼팝</p>
+            <p>스페인 플라멩코 전통을 레게톤·일렉트로닉과 결합해 실험적인 팝을 선보이며 그래미 라틴 부문을 석권했습니다.</p>
+            <ul>
+              <li>DESPECHÁ</li>
+              <li>Chicken Teriyaki</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Karol G</h3>
+            <p class="tagline">라틴 팝의 파워 보컬</p>
+            <p>강렬한 레게톤 비트와 솔직한 가사가 결합된 댄스 넘버로 여성 아티스트 최초의 빌보드 200 1위를 기록했습니다.</p>
+            <ul>
+              <li>TQG</li>
+              <li>BICHOTA</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+      <div class="section-block">
+        <h3>Latin Pop 입문 곡</h3>
+        <ul class="playlist">
+          <li><a href="#" title="YouTube에서 검색해 보세요">Despacito – Luis Fonsi &amp; Daddy Yankee</a><span>레게톤과 팝의 교과서.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">Bailando – Enrique Iglesias</a><span>스페인어·영어 버전 모두 사랑받는 히트곡.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">Tusa – Karol G &amp; Nicki Minaj</a><span>랩과 레게톤이 만난 이별 앤썸.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">Con Altura – Rosalía &amp; J Balvin</a><span>플라멩코와 레게톤의 감각적 믹스.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">La Vida Es Un Carnaval – Celia Cruz</a><span>살사 클래식으로 라틴 리듬의 뿌리를 느낄 수 있습니다.</span></li>
+          <li><a href="#" title="YouTube에서 검색해 보세요">Me Porto Bonito – Bad Bunny</a><span>트랩과 댄스홀 리듬이 자연스럽게 섞인 곡.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 비교 가이드 -->
+    <section id="compare-guide">
+      <h2>어떤 POP부터 들어볼까? – 입문 가이드</h2>
+      <p class="section-intro">분위기, 추천 상황, 스타터 곡을 비교하고 오늘의 첫 트랙을 골라보세요.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>장르</th>
+            <th>분위기/키워드</th>
+            <th>추천 상황</th>
+            <th>입문 추천 곡 예시</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>K-POP</td>
+            <td>퍼포먼스, 세계관, 팬덤 참여</td>
+            <td>화려한 콘텐츠와 이야기형 음악을 즐기고 싶을 때</td>
+            <td>Supernova – aespa</td>
+          </tr>
+          <tr>
+            <td>US Pop</td>
+            <td>빌보드 사운드, R&amp;B/힙합 믹스</td>
+            <td>차트 상위권 트렌드를 빠르게 파악하고 싶을 때</td>
+            <td>As It Was – Harry Styles</td>
+          </tr>
+          <tr>
+            <td>UK Pop</td>
+            <td>밴드·인디 감성, 브릿팝</td>
+            <td>감성적인 밴드 사운드나 싱어송라이터를 찾을 때</td>
+            <td>Don't Start Now – Dua Lipa</td>
+          </tr>
+          <tr>
+            <td>J-Pop</td>
+            <td>섬세한 멜로디, 애니송, 시티팝</td>
+            <td>드라마틱한 코드 진행과 애니메이션 감성을 느끼고 싶을 때</td>
+            <td>Pretender – Official髭男dism</td>
+          </tr>
+          <tr>
+            <td>Latin Pop</td>
+            <td>댄스 리듬, 레게톤, 트로피컬</td>
+            <td>축제 같은 에너지와 다국어 가사를 즐기고 싶을 때</td>
+            <td>Despacito – Luis Fonsi</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="cta-buttons">
+        <a class="btn primary" href="#playlist">힐링용 추천 곡 보기</a>
+        <a class="btn" href="#latin-pop-section">춤추고 싶을 때 재생 리스트</a>
+        <a class="btn" href="#us-pop-section">빌보드 감성으로 시작하기</a>
+      </div>
+      <p class="section-intro">밝은 에너지를 원한다면 Latin Pop의 리드미컬한 트랙, 감성적인 밤엔 UK Pop이나 J-Pop 발라드를 선택해 보세요. 다채로운 사운드 여행이 오늘의 기분을 바꿔줄 거예요.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 GLOBAL POP GUIDE. All rights reserved.</p>
+    <p>이 페이지는 교육용 예시입니다.</p>
+  </footer>
+</body>
+</html>
+
